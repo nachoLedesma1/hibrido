@@ -767,7 +767,7 @@ main(int argc, char **argv){
     
 
     //variables a usar 
-    int cantCelReal = 800;
+    int cantCelReal = 1500;
     int fil = cantCelReal, col = cantCelReal, caso,t=0;
     int cantEnvio = (col*fil)/cantNodos;
     float tiempos[10];
@@ -855,7 +855,7 @@ main(int argc, char **argv){
     inicio = MPI_Wtime();
     //MPI_Barrier(MPI_COMM_WORLD);
     
-    //for(int j =0; j<5; j++){
+    for(int j =0; j<5; j++){
         if(node == 0){
             inicializar(recibo, cantEnvio, fil); //cambiar logica
             asignoNada(nada, fil);
@@ -992,15 +992,15 @@ main(int argc, char **argv){
         }*/
         MPI_Barrier(MPI_COMM_WORLD);
         fin = MPI_Wtime();
-        //tiempos[j]= fin-inicio;
-        printf("El tiempo es %f", fin-inicio);
-    //}//for de ciclos
-    /*if(node ==  0){
+        tiempos[j]= fin-inicio;
+        //printf("El tiempo es %f", fin-inicio);
+    }//for de ciclos
+    if(node ==  0){
         printf("Los tiempos son: "); 
         for(int i= 0; i<10;i++){
             printf("%f, ",tiempos[i]);
         }
-    }*/
+    }
     MPI_Barrier(MPI_COMM_WORLD);
     printf("\n");
 
